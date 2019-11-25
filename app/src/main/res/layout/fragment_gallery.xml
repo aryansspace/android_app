@@ -23,6 +23,16 @@
         android:textColor="@android:color/black"
         android:layout_centerHorizontal = "true"/>
 
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="269dp"
+        android:layout_height="305dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_gallery"
+        app:layout_constraintVertical_bias="0.256"
+        android:scr="drawable/cricket"/>
 
     <TextView
         android:id="@+id/text_view_highscore"
@@ -36,13 +46,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.724" />
 
     <Button
         android:id="@+id/button_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="484dp"
         android:text="Start Quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
