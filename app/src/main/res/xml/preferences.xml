@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <SwitchPreferenceCompat
+        android:id="@+id/darkSwitch"
+        app:enabled="true"
+        app:key="dark"
+        app:title="Dark Theme"
+        app:defaultValue="true"
+        app:summary="Quiz App will turn dark mode"/>
+
+    <SwitchPreferenceCompat
+        android:id="@+id/fontSwitch"
+        app:enabled="true"
+        app:key="font"
+        app:title="Text Change"
+        app:defaultValue="true"
+        app:summary="Quiz font will be changed"/>
+
+</PreferenceScreen>

@@ -1,8 +1,15 @@
 package com.example.finalproject.ui.home;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ListAdapter;
+
+import androidx.fragment.app.Fragment;
+
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.R;
+import com.example.finalproject.ui.home.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,15 +22,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class fetchData extends AsyncTask<Void,Void,Void> {
+    Fragment one;
     String data ="";
     String dataParsed = "";
     String singleParsed ="";
-    List<String> your_array_list = new ArrayList<String>();
+    String[] players = new String[10];
+
+    public fetchData(Fragment one)
+    {this.one = one;}
+
     @Override
     protected Void doInBackground(Void... voids) {
         try {
@@ -40,16 +49,15 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             JSONArray JA = new JSONArray(data);
             for(int i =0 ;i <JA.length(); i++){
                 JSONObject jija = (JSONObject) JA.get(i);
+
                 singleParsed = "NAME:" + jija.get("name") + "\n"+
                         "Age:" + jija.get("age") + "\n"+
                         "Nation:" + jija.get("national_side") + "\n"+
                         "Ranking:" + jija.get("batting_rank") + "\n"+
                         "Man of the match:" + jija.get("man_of_the_match") + "\n";
-
+                players[i] = singleParsed;
                 dataParsed = dataParsed + singleParsed +"\n" ;
-
-                //************
-                your_array_list.add(singleParsed);
+//                dataParsed = players[0];
             }
 
         } catch (MalformedURLException e) {
@@ -69,10 +77,7 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
 
         HomeFragment.data.setText(this.dataParsed);
 
-       //d**********d
-//        HomeFragment.arrayAdapter = new ArrayAdapter<String>(HomeFragment.this, android.R.layout.simple_list_item_1, your_array_list);
-//        HomeFragment.listdata.setAdapter(arrayAdapter);
-
-//       d****************d
+       ArrayAdapter adapter = new ArrayAdapter<String>(one.getActivity() , R.layout.list_item,R.id.tv, players);
+       HomeFragment.list.setAdapter(adapter);
     }
 }

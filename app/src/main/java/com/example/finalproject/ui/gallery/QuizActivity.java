@@ -1,10 +1,14 @@
 package com.example.finalproject.ui.gallery;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.MediaStore;
@@ -42,9 +46,10 @@ public class QuizActivity extends AppCompatActivity {
     private int questionCounter, questionCountTotal, score;
     private Question currentQuestion;
     private Boolean answered;
-
+    Boolean fontChange;
     private long backPressedTime;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +73,11 @@ public class QuizActivity extends AppCompatActivity {
         questionCountTotal = questionList.size();
         Collections.shuffle(questionList);
 
+        SharedPreferences sharedPref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
+
+        Boolean fontPref = sharedPref.getBoolean("font", true);
+        fontChange = fontPref.booleanValue();
+
         showNextQuestion();
 
         buttonConfirmNext.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +97,7 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void showNextQuestion(){
         rb1.setTextColor(textColorDefaultRb);
         rb2.setTextColor(textColorDefaultRb);
@@ -101,6 +112,27 @@ public class QuizActivity extends AppCompatActivity {
             rb1.setText(currentQuestion.getOption1());
             rb2.setText(currentQuestion.getOption2());
             rb3.setText(currentQuestion.getOption3());
+
+            if(fontChange){
+                Typeface type = getResources().getFont(R.font.amaticregular);
+                textViewQuestion.setTextAppearance(R.style.TextAppearance_AppCompat_Large);
+                textViewQuestion.setTypeface(type);
+
+                rb1.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                rb1.setTypeface(type);
+                rb2.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                rb2.setTypeface(type);
+                rb3.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                rb3.setTypeface(type);
+                textViewQuestion.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                textViewQuestion.setTypeface(type);
+                textViewScore.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                textViewScore.setTypeface(type);
+                textViewQuestionCount.setTextAppearance(R.style.TextAppearance_AppCompat_Medium);
+                textViewQuestionCount.setTypeface(type);
+
+            }
+
 
             questionCounter++;
             textViewQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal);

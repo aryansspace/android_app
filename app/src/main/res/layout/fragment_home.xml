@@ -18,49 +18,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="160dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home" />
+<!--    <Button-->
+<!--        android:id="@+id/button1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="160dp"-->
+<!--        android:text="Button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/text_home" />-->
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="299dp"
-        android:layout_height="155dp"
+        android:layout_width="359dp"
+        android:layout_height="275dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_home"
-        app:layout_constraintVertical_bias="0.227">
+        app:layout_constraintVertical_bias="0.2">
 
         <TextView
             android:id="@+id/data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="18dp" />
     </ScrollView>
 
-    <ScrollView
-        android:layout_width="320dp"
-        android:layout_height="333dp"
-        android:layout_marginTop="16dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="273dp"
+        android:layout_height="336dp"
+        android:contentDescription="@string/menu_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+        app:layout_constraintTop_toTopOf="@+id/text_home"
+        app:srcCompat="@drawable/c1" />
 
-        <ListView
-            android:id="@+id/listdata"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="328dp"
+        android:layout_height="497dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_home" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
